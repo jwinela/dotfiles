@@ -1,0 +1,1 @@
+bind x exec ratmenu -align left terminator terminator firefox firefox screenshot "sleep 4; import -window root screenshot-$(date +%Y%m%d%H%M%S).png" thunderbird thunderbird virt-manager virt-manager wicd-client wicd-client xchat xchat xterm xterm &

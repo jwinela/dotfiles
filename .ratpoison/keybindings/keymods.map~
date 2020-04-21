@@ -1,0 +1,5 @@
+exec xmodmap -e "keycode 133 = F31" && ratpoison -c "escape F31"
+exec xmodmap -e "keycode 121 = F30"
+exec xmodmap -e "keycode 123 = F29"
+exec xmodmap -e "keycode 122 = F28"
+

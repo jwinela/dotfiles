@@ -1,0 +1,12 @@
+bind z exec ratpoison -c "echo `acpi`"
+definekey top  F30 exec /home/jwinela/.scripts/alsamute.sh
+definekey top  F29 exec /home/jwinela/.scripts/alsavolup.sh
+definekey top  F28 exec /home/jwinela/.scripts/alsavoldn.sh
+bind comma nextscreen
+bind period prevscreen
+bind apostrophe gselect
+bind semicolon gmove
+bind j exec sudo pm-suspend
+bind o exec xscreensaver-command -lock
+bind Tab next
+bind ISO_Left_Tab prev

@@ -1,0 +1,4 @@
+bind c exec Eterm --buttonbar no --scrollbar no 
+bind m exec firefox  -P minimal -no-remote http://www.google.com
+bind k exec firefox -P kiosk -no-remote http://localhost:8222/ui
+bind G exec /home/jwinela/.scripts/ratpoison_gimp.sh

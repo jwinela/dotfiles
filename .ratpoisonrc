@@ -1,0 +1,119 @@
+# This is a sample .ratpoisonrc file
+#
+# $Id: sample.ratpoisonrc,v 1.6 2003/09/10 22:25:32 sabetts Exp $
+
+addhook switchgroup next
+
+# change directory to $HOME
+chdir
+
+# Banish the mouse with each screenchange
+addhook switchwin banish
+
+# who needs a startup message?
+startup_message off
+
+# Graphics tweaks
+# Not quite sure what these do, copied from Reactor Core.
+# Supposedly make borders take up less space.
+defborder 0
+defpadding 0 0 0 0
+defbarpadding 0 0
+
+set font -bitstream-bitstream charter-medium-r-normal-*-140-*-*-*-p-*-ascii-* 
+set winname title
+set winfmt %n %s %t
+set fgcolor #FFFFFF
+set bgcolor #000000
+#set font -*-terminus-medium-r-normal-*-12-*-*-*-*-*-*-*
+#set font -schumacher-*-*-*-*-*-*-60-*-*-*-*-iso646.1991-irv
+set winliststyle column
+set inputwidth 400
+set waitcursor 1
+set padding 0 0 0 0
+set barpadding 1 1
+set wingravity n 
+set transgravity center
+set bargravity nw
+set border 0
+set barborder 1
+set inputwidth 1430
+
+unmanage XMMS 
+
+# Run unclutter so the mouse hangs around no longer than needed.
+exec unclutter -idle 1 -jitter 2 -root
+
+# This should set up workspaces and aliases
+#exec .ratpoison/workspace init -a
+
+# Rat warp feature doesn't seem to work right on my system
+warp on
+
+# Gets rid of that ugly crosshairs default cursor
+# and set the background to black
+exec xsetroot -solid black -cursor_name left_ptr
+
+# Use the name of the program rather than the title in the window list
+defwinname name
+
+#
+# I like to separate my ratpoisonrc into this main file and a file
+# for each keymap.  That way I can reload individual keymap files
+# without restarting ratpoison.  Example to reload the clipboard
+# bindings:
+#
+# C-t :source .ratpoison/ratpoisonrc.clipboard
+#
+
+# Source key mapping / remapping using xmodmap to bind various keys
+source /home/jwinela/.ratpoison/keybindings/keymods.map
+
+# Load key mapping for unbound keys - these are bound later 
+source /home/jwinela/.ratpoison/keybindingds/ratpoisonrc.unbinding
+
+# Load clipboard keymap bindings and commands
+#source .ratpoison/ratpoisonrc.clipboard
+
+# Load ratpoison root keymap bindings and commands
+source /home/jwinela/.ratpoison/keybindings/ratpoisonrc.root_mappings
+
+# Load ratpoison key macro keymap bindings for program launching
+source /home/jwinela/.ratpoison/keybindings/ratpoisonrc.run_program_key_mappings
+
+###This should set up rpws and groups
+   exec rpws init 6 -ak
+
+   bind F1 exec rpws 1
+   bind F2 exec rpws 2
+   bind F3 exec rpws 3
+   bind F4 exec rpws 4
+   bind F5 exec rpws 5
+   bind F6 exec rpws 6
+   bind F7 exec rpws 7
+   bind F8 exec rpws 8
+   bind F9 exec rpws 9
+   bind F10 exec rpws 10
+   bind F11 exec rpws 11
+   bind F12 exec rpws 12
+
+# Load autostart programs
+source /home/jwinela/.ratpoison/keybindings/autostart_programs
+
+# Start screensaver 
+   exec xscreensaver-command -exit
+   exec xscreensaver &
+
+#mplayer use
+
+bind P exec ( /home/jwinela/ratpoison_play.sh; exit 0 ) #play
+bind n exec ( killall mplayer; exit 0 ) #next
+bind h exec killall -STOP mplayer #halt
+bind g exec killall -CONT mplayer #go
+bind d exec killall .scripts/ratpoison_play.sh #destroy
+
+#alias screendump xec FH=xwd-$(date +%s)$$; xwd -root > /tmp/$USER-$FH; convert /tmp/$USER-$FH png:$HOME/$FH.png; rm -f /tmp/$USER-$FH
+# -- Printscreen
+definekey top Print exec scrot -c && ratpoison -c "Screenshot Created in ~"
+undefinekey M-Tab 
+

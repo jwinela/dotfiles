@@ -1,0 +1,12 @@
+unbind c
+unbind apostrophe
+unbind k
+unbind p
+unbind n
+unbing g
+unbind d
+unbind Tab
+unbind M-Tab
+unbind ISO-Left-M-Tab
+undefine M-Tab
+unbind F32 
